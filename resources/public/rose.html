@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<head>
+  <title>La vie en cloj : Rose</title>
+
+  <meta name="viewport" content="width=device-width, user-scalable=no" />
+
+  <script src="/webjars/jquery/1.9.1/jquery.js"></script>
+
+  <link rel="stylesheet" href="/webjars/jquery-ui-themes/1.10.0/ui-darkness/jquery-ui.css" />
+  <script src="/webjars/jquery-ui/1.10.2/ui/jquery-ui.js"></script>
+
+  <script src="/mondrian/js/jquery.ui.touch-punch.js"></script>
+
+  <link rel="stylesheet" href="/mondrian/css/mondrian.css" />
+
+  <script src="/js/la_vie_en_cloj_dev.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      // Connect the REPL.
+      la_vie_en_cloj.repl.connect();
+
+      // Add the FPS counter.
+      mondrian.anim.add_fps($('#fps')[0]);
+
+      // Start the animation(s).
+      $('.mondrian.rose').each(function (index) {
+        la_vie_en_cloj.rose.start(this);
+      });
+    });
+  </script>
+</head>
+
+<body>
+  <div class="mondrian rose"
+       data-value-num-points="24"
+       data-value-point-rpm="2.5"
+       data-value-fixed-r="12"
+       data-value-rolling-r="1"
+       data-value-radial="9"
+       data-value-persist-image="false"
+       data-value-show-wireframe="false">
+
+    <div>FPS: <span id="fps"></span></div>
+
+    <canvas width="320" height="320"></canvas>
+
+    <div class="togglegroup control"
+      data-label="Options:"
+      data-button1-name="show-wireframe"
+      data-button1-label="Show Wireframe"
+      data-button2-name="persist-image"
+      data-button2-label="Persist Image">
+    </div>
+
+    <div class="slider control"
+         data-name="num-points"
+         data-label="Points:"
+         data-min="1"
+         data-max="100">
+    </div>
+
+    <div class="slider control"
+         data-name="point-rpm"
+         data-label="RPM:"
+         data-min="0.1"
+         data-max="5"
+         data-step="0.1">
+    </div>
+
+    <div class="slider control"
+         data-name="fixed-r"
+         data-label="R:"
+         data-min="1"
+         data-max="20">
+    </div>
+
+    <div class="slider control"
+         data-name="rolling-r"
+         data-label="r:"
+         data-min="1"
+         data-max="20">
+    </div>
+
+    <div class="slider control"
+         data-name="radial"
+         data-label="d:"
+         data-min="1"
+         data-max="20">
+    </div>
+  </div>
+</body>

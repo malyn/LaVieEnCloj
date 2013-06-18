@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<head>
+  <title>La vie en cloj : bounce</title>
+
+  <meta name="viewport" content="width=device-width, user-scalable=no" />
+
+  <script src="/webjars/jquery/1.9.1/jquery.js"></script>
+
+  <link rel="stylesheet" href="/webjars/jquery-ui-themes/1.10.0/ui-darkness/jquery-ui.css" />
+  <script src="/webjars/jquery-ui/1.10.2/ui/jquery-ui.js"></script>
+
+  <script src="/mondrian/js/jquery.ui.touch-punch.js"></script>
+
+  <link rel="stylesheet" href="/mondrian/css/mondrian.css" />
+
+  <script src="/js/la_vie_en_cloj_dev.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      // Connect the REPL.
+      la_vie_en_cloj.repl.connect();
+
+      // Add the FPS counter.
+      mondrian.anim.add_fps($('#fps')[0]);
+
+      // Start the animation(s).
+      $('.mondrian.bounce').each(function (index) {
+        la_vie_en_cloj.bounce.start(this);
+      });
+    });
+  </script>
+</head>
+
+<body>
+  <div class="mondrian bounce"
+       data-value-persist-image="false"
+       data-value-speed-pps="100"
+       data-value-ball-size="5">
+    <div>FPS: <span id="fps"></span></div>
+
+    <canvas width="320" height="320"></canvas>
+
+    <div class="togglegroup control"
+         data-label="Options:"
+         data-button1-name="persist-image"
+         data-button1-label="Persist Image">
+    </div>
+
+    <div class="slider control"
+         data-name="speed-pps"
+         data-label="Speed:"
+         data-min="10"
+         data-max="200"
+         data-step="10">
+    </div>
+
+    <div class="slider control"
+         data-name="ball-size"
+         data-label="Ball Size:"
+         data-min="1"
+         data-max="100">
+    </div>
+  </div>
+</body>
