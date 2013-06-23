@@ -6,7 +6,7 @@
             [mondrian.plot :as plot]
             [mondrian.ui :as ui]
             [monet.canvas :as m])
-  (:use-macros [dommy.macros :only [sel1]]))
+  (:use-macros [mondrian.macros :only [defmondrian]]))
 
 ;; ---------------------------------------------------------------------
 ;; Update pipeline
@@ -98,20 +98,7 @@
 ;; Main entry point
 ;;
 
-(defn ^:export start
-  "Starts the bouncing ball animation given the top-level DOM element that
-  contains the canvas and any controls."
-  [drawing]
-  (let [canvas (sel1 drawing :canvas)
-        ctx (m/get-context canvas "2d")
-        [w h] (ui/setup-canvas canvas ctx 1.0)
-        fixed-state {:drawing drawing :ctx ctx :w w :h h}
-        init-state {:x 100 :y 100 :direction (rand-int 360)}
-        state (merge fixed-state init-state)]
-    (anim/start state
-                #(update-pipeline %)
-                #(render-stack %)
-                #(-> ctx
-                     (m/fill-style "red")
-                     (m/font-style "sans-serif")
-                     (m/text {:text % :x 0 :y 20})))))
+(defmondrian bounce-anim
+  {:x 100 :y 100 :direction (rand-int 360)}
+  update-pipeline
+  render-stack)

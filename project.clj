@@ -8,8 +8,7 @@
   :dependencies [[org.clojure/clojure "1.5.1"]
                  [com.cemerick/piggieback "0.0.4"]
                  [compojure "1.1.5"]
-                 [mondrian "0.1.0"]
-                 [prismatic/dommy "0.1.1"]
+                 [mondrian "0.1.1-SNAPSHOT"]
                  [ring "1.1.8"]
                  [rm-hull/monet "0.1.7"]]
 
