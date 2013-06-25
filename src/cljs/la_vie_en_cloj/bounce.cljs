@@ -49,13 +49,15 @@
   (merge state (ui/update-controls drawing)))
 
 (defn move
-  [{:keys [delta-t-ms speed-pps x y direction] :as state}]
+  [{:keys [delta-t-ms speed-pps x y w h direction] :as state}]
   (let [direction (math/radians direction)
         pixels-per-millisecond (/ speed-pps 1000)
         delta-pixels (* delta-t-ms pixels-per-millisecond)
         dx (math/circle-x delta-pixels direction)
-        dy (math/circle-y delta-pixels direction)]
-    (assoc state :x (+ x dx) :y (+ y dy))))
+        dy (math/circle-y delta-pixels direction)
+        clamped-x (-> x (+ dx) (max 0) (min w))
+        clamped-y (-> y (+ dy) (max 0) (min h))]
+    (assoc state :x clamped-x :y clamped-y)))
 
 (defn bounce
   [{:keys [w h x y] :as state}]
