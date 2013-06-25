@@ -1,4 +1,4 @@
-(defproject la-vie-en-cloj "0.1.0"
+(defproject la-vie-en-cloj "0.1.1"
   :description "mondrian-based interactive artwork"
   :url "https://github.com/malyn/LaVieEnCloj"
   :license {:name "BSD"
@@ -8,7 +8,7 @@
   :dependencies [[org.clojure/clojure "1.5.1"]
                  [com.cemerick/piggieback "0.0.4"]
                  [compojure "1.1.5"]
-                 [mondrian "0.1.1-SNAPSHOT"]
+                 [mondrian "0.1.1"]
                  [ring "1.1.8"]
                  [rm-hull/monet "0.1.7"]]
 
